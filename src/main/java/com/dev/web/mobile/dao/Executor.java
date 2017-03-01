@@ -1,6 +1,7 @@
 package com.dev.web.mobile.dao;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 
 import com.dev.web.mobile.model.City;
@@ -56,7 +57,7 @@ public class Executor {
 		
 			cityDAO.update(city);
 			
-		} catch(ClassNotFoundException | SQLException | IOException e) {
+		} catch(ClassNotFoundException | SQLException | IOException | URISyntaxException e) {
 			System.out.println(e.toString());
 			
 		}

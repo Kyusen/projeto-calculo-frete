@@ -1,6 +1,7 @@
 package com.dev.web.mobile.impl;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class CadastraCidade implements ActionExecuter {
 			
 			updateRequestCityList(request);
 
-		} catch (ClassNotFoundException | SQLException | IOException e) {
+		} catch (ClassNotFoundException | SQLException | IOException | URISyntaxException e) {
 			e.printStackTrace();
 		}
 		

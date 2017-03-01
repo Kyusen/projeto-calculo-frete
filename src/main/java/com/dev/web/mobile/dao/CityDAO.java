@@ -1,6 +1,7 @@
 package com.dev.web.mobile.dao;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -38,7 +39,7 @@ public class CityDAO extends GenericDAO{
 		return cities;
 	}
 	
-	public City getCityByGeocodigo(double geocodigo) throws ClassNotFoundException, SQLException, IOException{
+	public City getCityByGeocodigo(double geocodigo) throws ClassNotFoundException, SQLException, IOException, URISyntaxException{
 		String sql = "SELECT id, nome, geocodigo, latitude, longitude " +
 						"FROM city WHERE geocodigo = ?";
 		
@@ -67,7 +68,7 @@ public class CityDAO extends GenericDAO{
 		
 	}
 	
-	public void insert(City city) throws ClassNotFoundException, SQLException, IOException{
+	public void insert(City city) throws ClassNotFoundException, SQLException, IOException, URISyntaxException{
 		String sql = "insert into city (nome, geocodigo, latitude, longitude)" +
 				"values (?, ?, ?, ?)";
 		
@@ -89,7 +90,7 @@ public class CityDAO extends GenericDAO{
 		
 	}
 	
-	public void update(City city) throws ClassNotFoundException, SQLException, IOException {
+	public void update(City city) throws ClassNotFoundException, SQLException, IOException, URISyntaxException {
 		
 		String sql = "update city set nome=?, geocodigo=?, latitude=?, longitude=? " +
 					"where id = ?";
@@ -113,7 +114,7 @@ public class CityDAO extends GenericDAO{
 		
 	}
 	
-	public void delete(City city) throws ClassNotFoundException, SQLException, IOException {
+	public void delete(City city) throws ClassNotFoundException, SQLException, IOException, URISyntaxException {
 		String sql = "delete from city where id = ?";
 		
 		PreparedStatement ps = null;

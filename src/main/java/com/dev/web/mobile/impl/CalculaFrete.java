@@ -1,6 +1,7 @@
 package com.dev.web.mobile.impl;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +46,7 @@ public class CalculaFrete implements ActionExecuter {
 			Frete frete = getFreteCalculated(cityA, cityB, distanceCalculated);
 			setFreteInResponse(request, frete);
 
-		} catch (ClassNotFoundException | SQLException | IOException e) {
+		} catch (ClassNotFoundException | SQLException | IOException | URISyntaxException e) {
 			e.printStackTrace();
 		}
 		
