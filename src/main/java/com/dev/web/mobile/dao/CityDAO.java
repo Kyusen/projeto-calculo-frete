@@ -48,7 +48,7 @@ public class CityDAO extends GenericDAO{
 		ResultSet rs = null;
 		
 		try {
-			ps = getConnectionPool().prepareStatement(sql);
+			ps = getConnection().prepareStatement(sql);
 			ps.setDouble(1, geocodigo);
 			rs = ps.executeQuery();
 			
@@ -75,7 +75,7 @@ public class CityDAO extends GenericDAO{
 		PreparedStatement ps = null;
 		
 		try {
-			ps = getConnectionPool().prepareStatement(sql);
+			ps = getConnection().prepareStatement(sql);
 			
 			ps.setString(1, city.getNome());
 			ps.setDouble(2, city.getGeocodigo());
@@ -98,7 +98,7 @@ public class CityDAO extends GenericDAO{
 		PreparedStatement ps = null;
 		
 		try {
-			ps = getConnectionPool().prepareStatement(sql);			
+			ps = getConnection().prepareStatement(sql);			
 			ps.setLong(5, city.getId());			
 			
 			ps.setString(1, city.getNome());
@@ -120,7 +120,7 @@ public class CityDAO extends GenericDAO{
 		PreparedStatement ps = null;
 		
 		try {
-			ps = getConnectionPool().prepareStatement(sql);
+			ps = getConnection().prepareStatement(sql);
 			
 			ps.setLong(1, city.getId());			
 			ps.execute();

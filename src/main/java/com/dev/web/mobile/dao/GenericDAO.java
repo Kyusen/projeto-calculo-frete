@@ -1,7 +1,6 @@
 package com.dev.web.mobile.dao;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -64,23 +63,9 @@ public abstract class GenericDAO {
 		return objects;
 	}
 	
-	public Connection getConnection() throws ClassNotFoundException, SQLException, IOException {		
+	public Connection getConnection() throws ClassNotFoundException, SQLException, IOException {
 		if(conn == null || conn.isClosed())
-			return conn = ConnectionFactory.getInstance().createConnection();
-		else
-			return conn;		
-	}
-	
-	public Connection getConnectionPool() throws ClassNotFoundException, SQLException, IOException, URISyntaxException {		
-		if(conn == null || conn.isClosed())
-			return conn = ConnectionPool.getInstance().getConnectionHeroku();
-		else
-			return conn;		
-	}
-	
-	public Connection getConnectionPoolHeroku() throws ClassNotFoundException, SQLException, IOException, URISyntaxException {		
-		if(conn == null || conn.isClosed())
-			return conn = ConnectionPool.getInstance().getConnectionHeroku();
+			return ConnectionFactory.getInstance().getConnectionManager().getConnection();
 		else
 			return conn;		
 	}

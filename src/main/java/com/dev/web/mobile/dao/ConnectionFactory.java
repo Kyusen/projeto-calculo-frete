@@ -1,13 +1,8 @@
 package com.dev.web.mobile.dao;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
-import java.util.Properties;
-
-import com.dev.web.mobile.util.FretaoConstantes;
-import com.dev.web.mobile.util.PropertyUtil;
 
 /**
  * 
@@ -17,34 +12,31 @@ import com.dev.web.mobile.util.PropertyUtil;
 public class ConnectionFactory {
 
 	private static ConnectionFactory INSTANCE = null;
-	private final Properties props;
 
-	private ConnectionFactory(Properties props) {
-		this.props = props;
+	private ConnectionFactory() {
 	}
 
 	public static final synchronized ConnectionFactory getInstance() throws IOException {
-		if (INSTANCE == null) {
-			final Properties props = PropertyUtil.getInstance()
-					.loadPropertieFile(FretaoConstantes.FRETAO_DB_PROPERTIES_FILE_NAME);
-			INSTANCE = new ConnectionFactory(props);
-		}
+		if (INSTANCE == null)	
+			INSTANCE = new ConnectionFactory();
+		
 		return INSTANCE;
 	}
 
-	public Connection createConnection() throws SQLException, IOException, ClassNotFoundException {
-		StringBuilder builder = new StringBuilder();
-		builder.append(props.getProperty("jdbc.protocolo"));
-		builder.append(props.getProperty("jdbc.host"));
-		builder.append(":");
-		builder.append(props.getProperty("jdbc.port"));
-		builder.append("/");
-		builder.append(props.getProperty("jdbc.database"));
+	public ConnectionManager getConnectionManager() throws SQLException, IOException, ClassNotFoundException {
 
-		Class.forName(props.getProperty("jdbc.driver"));
-		Connection connection = DriverManager.getConnection(builder.toString(), props.getProperty("jdbc.username"),
-				props.getProperty("jdbc.password"));
-		return connection;
+		ConnectionManager connectionManager = null;
+
+		try {
+			connectionManager = HerokuConnectionManager.getInstance();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		
+		//connectionManager = LocalConnectionManager.getInstance();
+
+		return connectionManager;
+
 	}
 
 }
