@@ -1,6 +1,5 @@
 package com.dev.web.mobile.dao;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -10,6 +9,7 @@ import java.util.Properties;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 
+import com.dev.web.mobile.util.FretaoConstantes;
 import com.dev.web.mobile.util.PropertyUtil;
 
 public class ConnectionPool {
@@ -23,17 +23,14 @@ public class ConnectionPool {
 
 	public static final synchronized ConnectionPool getInstance() throws IOException {
 		if (INSTANCE == null) {
-			final Properties props = PropertyUtil.getInstance().readFromClasspath("fretao.properties");
-			if (props == null) {
-				throw new FileNotFoundException(
-						String.format("Dont possible find the db-config file: '%s'.", "fretao.properties"));
-			}
+			final Properties props = PropertyUtil.getInstance()
+					.loadPropertieFile(FretaoConstantes.FRETAO_DB_PROPERTIES_FILE_NAME);
 			INSTANCE = new ConnectionPool(props);
 		}
 		return INSTANCE;
 	}
 	
-	public Connection createConnectionComPool() throws SQLException, IOException, ClassNotFoundException {
+	public Connection createConnectionWithPool() throws SQLException, IOException, ClassNotFoundException {
 		StringBuilder builder = new StringBuilder();
 		builder.append(props.getProperty("jdbc.protocolo"));
 		builder.append(props.getProperty("jdbc.host"));

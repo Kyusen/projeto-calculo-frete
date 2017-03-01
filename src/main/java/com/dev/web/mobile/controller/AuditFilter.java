@@ -12,22 +12,26 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
 @WebFilter(urlPatterns = "/*")
-public class AuditoriaFiltro implements Filter{
+public class AuditFilter implements Filter {
 
-	public void destroy() {		
-		// TODO Pode ser implementado alguma a��o quando se destroi a instancia;
-	}
-
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filter) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filter)
+			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
-		System.out.println("Imprimindo a URI: " + req.getRequestURI());
-		System.out.println("Imprimindo a URL: " + req.getRequestURL() + "/" + req.getQueryString());
-		
+		logRequestedURLInfo(req);
 		filter.doFilter(request, response);
 	}
 
+	private void logRequestedURLInfo(HttpServletRequest req) {
+		System.out.println("Imprimindo a URI: " + req.getRequestURI());
+		System.out.println("Imprimindo a URL: " + req.getRequestURL() + "/" + req.getQueryString());
+	}
+
 	public void init(FilterConfig config) throws ServletException {
-		// TODO Pode ser implementado alguma a��o quando se inicia a instancia;		
+
+	}
+
+	public void destroy() {
+
 	}
 
 }

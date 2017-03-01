@@ -93,5 +93,10 @@ public class City implements Serializable {
 		return "City [id=" + id + ", nome=" + nome + ", geocodigo=" + geocodigo + ", latitude=" + latitude
 				+ ", longitude=" + longitude + "]";
 	}
+
+	public boolean isCityValid() {
+		return (this.getNome() != null) && (this.getGeocodigo() != 0)
+				&& (this.getLatitude() != 0) && (this.getLongitude() != 0);
+	}
 	
 }

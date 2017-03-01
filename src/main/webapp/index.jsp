@@ -2,8 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>UNISAL - Desenvolvimento de Sistemas Web e Mobile</title>
+    	<title>UNISAL - Desenvolvimento de Sistemas Web e Mobile</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        
         <style type="text/css">
             @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
@@ -108,8 +108,9 @@
         </style>
     </head>
     <body>
-        <div class="login-page">
+        <div class="login-page">        
             <div class="form">
+            <p>UNISAL - Desenvolvimento de Sistemas Web e Mobile</p>
                 <form action="controlador-geral?execute=Login" method="post">
 				    <input type="submit" value="Login" />
 				</form>
