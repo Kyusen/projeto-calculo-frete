@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
@@ -8,7 +9,7 @@
             @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
             .login-page {
-                width: 360px;
+                width: 380px;
                 padding: 8% 0 0;
                 margin: auto;
             }
@@ -18,7 +19,7 @@
                 background: #FFFFFF;
                 max-width: 360px;
                 margin: 0 auto 100px;
-                padding: 45px;
+                padding: 20px;
                 text-align: center;
                 box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             }
@@ -96,23 +97,29 @@
                 color: #EF3B3A;
             }
             body {
-                background: #CCE5FF; /* fallback for old browsers */
-                background: -webkit-linear-gradient(right, #CCE5FF, #CCE5FF);
-                background: -moz-linear-gradient(right, #CCE5FF, #CCE5FF);
-                background: -o-linear-gradient(right, #CCE5FF, #CCE5FF);
-                background: linear-gradient(to left, #CCE5FF, #CCE5FF);
-                font-family: "Roboto", sans-serif;
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;      
+				/*background-image: url(/static/img/bg/clould-01.jpg);*/
+				background-image: url(<c:url value="/static/img/bg/clould-01.jpg" />);
+				background-attachment: fixed;
+				background-position: 49% 50%;
+				background-repeat: no-repeat;
+				-webkit-background-size: cover;
+				-moz-background-size: cover;
+				-o-background-size: cover;
+				background-size: cover;    
             }
+	
+			
+			
         </style>
     </head>
     <body>
         <div class="login-page">        
             <div class="form">
-            <p>UNISAL - Desenvolvimento de Sistemas Web e Mobile</p>
+            <h2>UNISAL</h2> 
+			<hr>
+			<p>Desenvolvimento de Sistemas Web e Mobile</p>
                 <form action="controlador-geral?execute=Login" method="post">
-				    <input type="submit" value="Login" />
+				    <input style="background: #000000;color: #ffffff;border-top-left-radius: 6px;border-top-right-radius: 6px;border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;" type="submit" value="Acessar o Sistema" />
 				</form>
             </div>
         </div>

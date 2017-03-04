@@ -1,76 +1,86 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="pt-br">
 <head>
+    <meta charset="utf-8">
+    
+	<!-- 
+	Pós-graduação em Desenvolvimento de Sistemas Web e Mobile
+	Linguagem de Programação Web - Java
+	
+	Sistema Web criado para realizar as seguintes atividades:
+	- Cadastro de Cidades
+	- Cálculo do frete entre duas cidades com base em regras de acordo com a distância entre as mesmas
+	-->
+    <title>FastLesma :: Sistema de Cálculo de Frete</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistema web para cálculo de frete">
+    <meta name="author" content="Douglas Nunes, Fernando Isméria, José Renato Nunes e Leonardo Ramos">
+    
+    <!-- Estilos -->
+    <link href="<c:url value="/static/css/bootstrap.css" />" rel="stylesheet">
+    <link href="<c:url value="/static/css/style.css" />" rel="stylesheet">
+    <link href="<c:url value="/static/css/camera.css" />" rel="stylesheet">
+    <link href="<c:url value="/static/css/icons.css" />" rel="stylesheet">
+    
+    <!-- 
+    O arquivo abaixo define o configuração de cores a serem utilizadas
+    -->
+    <link href="<c:url value="/static/css/skin-blue.css" />" rel="stylesheet">
+    
+	
+    <link href="<c:url value="/static/css/bootstrap-responsive.css" />" rel="stylesheet">
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+          <script src="<c:url value="/static/js/html5shiv.js" />"></script>
+        <![endif]-->
+		
+    <!-- Fav icon -->
+    <link rel="shortcut icon" href="<c:url value="/static/img/ico/favicon.png" />">
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-	crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-	crossorigin="anonymous"></script>
-
-<style type="text/css">
-.texto {
-	font-size: 16px !important;
-}
-</style>
-
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>UNISAL - Desenvolvimento de Sistemas Web e Mobile -
-	2016/2017</title>
 </head>
 
-<body>
 
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-				aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#">Cálculo de Frete</a>
-		</div>
-		<div id="navbar" class="navbar-collapse collapse">
-			<form class="navbar-form navbar-right"
-				action="controlador-geral?execute=Logout" method="post">
-				<button type="submit" class="btn btn-success">Logout</button>
-			</form>
-		</div>
-		<!--/.navbar-collapse -->
-	</div>
-	</nav>
 
-	<!-- Main jumbotron for a primary marketing message or call to action -->
-	<div class="jumbotron">
-		<div class="container">
-			<h2>Sistema de Cadastro de Cidades e Cálculo de Fretes</h2>
-			<p class="texto">Sistema foi desenvolvido utilizando JSP, JSTL,
-				SERVLETs, JDBC, PostgreSQL na Heroku e deploy com associação na
-				conta do Github também em uma app criada na Heroku. O sistema
-				permite entrada de uma nova cidade e calculo de extensão e frete de
-				acordo com regra interna. O sistema foi desenvolvido em sala de aula
-				juntamente com os alunos da UNISAL - Lorena do curso da Pós em
-				Desenvolvimento de Sistemas WEB e Mobile - Turma 2016. Após a
-				entrega do trabalho final da turma, esse código fonte ficará
-				disponível no Github.</p>
-		</div>
-	</div>
+<!-- 
+HEADER - Início
+-->
+<body class="boxed">
+<div class="body">
 
-	<div class="container">
+	<!-- Navigation -->
+	<header>
+	<div class="container clearfix">
+		<div class="row-fluid">
+			<div class="span12">
+            
+				
+				<h1 class="brandlogo"><a href="controlador-geral?execute=Voltar"><img src="<c:url value="/static/img/logo_frete_2.png" />" alt="FASTLESMA"></a></h1>
+				
+                
+				<div class="topinfo">
+				
+					<!-- Ícones para rdes sociais -->
+					<ul class="social-icons list-soc">
+						<li><a href="#"><i class="icon-facebook"></i></a></li>
+						<li><a href="#"><i class="icon-twitter"></i></a></li>
+						<li><a href="#"><i class="icon-linkedin"></i></a></li>
+						<li><a href="#"><i class="icon-google-plus"></i></a></li>
+					</ul>
+					<div class="infophone">
+						<i class="icon-phone"></i> Tel: +55 12 3159-2033
+					</div>
+					<div class="infoaddress">
+						 Rua Dom Bosco, 283 - Lorena
+					</div>
+				</div>
+                
+                
+				<div class="clearfix">
+				</div>
+                
+   

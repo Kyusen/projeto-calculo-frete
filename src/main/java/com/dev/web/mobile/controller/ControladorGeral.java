@@ -41,4 +41,31 @@ public class ControladorGeral extends HttpServlet{
 		} 
 	}
 	
+
+	// Método criado para que possam atender requisições do tipo GET
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
+		String instance = req.getParameter("execute");
+		if (instance == null) 
+			throw new IllegalArgumentException("The [execute] parameter cannot be null.");
+		
+		StringBuilder classe = new StringBuilder();
+		classe.append(FretaoConstantes.PROJECT_BASE_PACKAGE_PATH);
+		classe.append(instance);
+		
+		try {
+			Class<?> type = Class.forName(classe.toString().trim());
+			ActionExecuter criarInstancia = (ActionExecuter) type.newInstance();
+			String pagina = criarInstancia.execute(req, resp);
+			
+			RequestDispatcher dispatcher = req.getRequestDispatcher(pagina);
+			dispatcher.forward(req, resp);
+			
+		} catch (Exception e) {
+			throw new ServletException(e);
+		} 
+	}
+
+
 }

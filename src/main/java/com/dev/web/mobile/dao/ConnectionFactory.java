@@ -29,7 +29,9 @@ public class ConnectionFactory {
 
 		try {
 			connectionManager = HerokuConnectionManager.getInstance();
-		} catch (URISyntaxException e) {
+			//connectionManager = LocalConnectionManager.getInstance();
+		} //
+		catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
 		
